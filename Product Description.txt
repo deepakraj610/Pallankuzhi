@@ -1,0 +1,70 @@
+## Project Overview: Single-Player Offline Pallankuzhi
+
+This is a specification and architecture guide for building a local, single-player **Pallankuzhi** console/terminal or desktop application (ideal for development via Claude Code using Python, Streamlit, or a lightweight terminal interface).
+
+The application pits a human player against an AI opponent in an offline environment, keeping the timeless arithmetic and sowing mechanics alive through clean code.
+
+---
+
+## 1. Core Game Rules & Mechanics
+
+* **The Board Layout:** 2 rows of 7 cups each (total 14 cups).
+* **Bottom Row (Player's Side):** Cups $0$ to $6$.
+* **Top Row (AI/Opponent's Side):** Cups $7$ to $13$ (or mirrored index tracking).
+
+
+* **Initial Setup:** Each of the 14 cups starts with **5 seeds** (Total = 70 seeds).
+* **Turn Mechanics (Sowing):**
+1. The active player selects a non-empty cup on their side.
+2. All seeds from that cup are picked up, and the original cup becomes empty ($0$ seeds).
+3. Moving in a counter-clockwise direction, one seed is dropped into each subsequent cup.
+4. **Capturing:** When the **last seed** of a sowing sequence lands in a cup, the player takes *all* seeds from the cup *immediately following* it (or according to classic rules, checks if the landing cup triggers a capture sequence). If the cup after the landing cup has seeds, those are captured, and if the cup *after that* also has seeds, the chain capture continues until an empty cup is hit.
+5. **Gym/Pass Turn:** If the last seed lands in an empty cup, the turn ends immediately without a capture.
+
+
+* **Winning Condition:** The game ends when all seeds are captured, or when a player no longer has any seeds left on their side to make a valid move. The player with the highest captured seed count wins.
+
+---
+
+## 2. Technical Architecture & Tech Stack
+
+* **Language:** Python 3.x (Clean, object-oriented or functional structure, highly readable for Claude Code generation).
+* **Interface Options:**
+* *Option A (Terminal/CLI):* Colored text interface using ANSI escape codes or libraries like `rich` for a visually appealing text-based board.
+* *Option B (Local Web GUI):* A lightweight **Streamlit** or **Flask** app running entirely on `localhost`.
+
+
+* **AI Opponent Strategy:**
+* **Level 1 (Easy):** Random valid move selection.
+* **Level 2 (Medium):** Greedy heuristic algorithm prioritizing moves that maximize immediate captures or set up chain captures.
+
+
+
+---
+
+## 3. Detailed Component Breakdown for Claude Code
+
+When prompting Claude Code to build this application, use this modular breakdown:
+
+### A. Game State Model (`board.py` or core logic)
+
+* Represent the board as a list of 14 integers: `board = [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]`.
+* Track scores for Player (Human) and AI in separate integer variables.
+* Implement validation logic to ensure the human only picks cups from their valid range ($0-6$) and that the chosen cup isn't empty.
+
+### B. Sowing & Capture Engine (`game_engine.py`)
+
+* Write a function `sow_seeds(board, start_index)` that handles the circular index wrapping (`index = (index + 1) % 14`) and distributes seeds one by one.
+* Implement the cascading capture rule: check the state of the board after the final seed is dropped to execute captures and update score trackers.
+
+### C. AI Decision Maker (`ai_opponent.py`)
+
+* Write an evaluation function that scans all valid moves available on the AI's side ($7-13$).
+* Simulate each move in memory to calculate potential captures, returning the optimal index for the AI's turn.
+
+### D. User Interface (`app.py` or `cli.py`)
+
+* Render a clear ASCII/Grid layout showing both rows, seed counts inside each cup, and current captured scores.
+* Provide clear prompts for the human player to input their chosen cup number (e.g., entering `1` through `7`).
+
+---

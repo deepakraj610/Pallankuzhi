@@ -1,0 +1,23 @@
+# Usage: docker compose -f docker-compose.yml -f docker-compose.dev.yml up
+services:
+  backend:
+    command: sh -c "alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload --proxy-headers"
+    volumes:
+      - ./backend/app:/app/app
+      - ./backend/alembic:/app/alembic
+
+  frontend:
+    image: node:20-alpine
+    build: !reset null
+    working_dir: /app
+    command: sh -c "npm install && npm run dev -- --host 0.0.0.0 --port 3000"
+    environment:
+      VITE_API_URL: ${VITE_API_URL:-http://localhost:8000}
+    volumes:
+      - ./frontend:/app
+      - frontend_node_modules:/app/node_modules
+    ports: !override
+      - "3000:3000"
+
+volumes:
+  frontend_node_modules:

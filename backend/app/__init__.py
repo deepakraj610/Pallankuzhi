@@ -1,0 +1,1 @@
+"""Pallankuzhi backend application."""

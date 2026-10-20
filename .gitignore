@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+# Node
+node_modules/
+dist/
+*.tsbuildinfo
+npm-debug.log*
+coverage/
+# Env / OS / IDE
+.env
+.env.*
+!.env.example
+.DS_Store
+.idea/
+.vscode/
+
+# Offline Android build mode flag (no secrets); the APK itself is a build artifact
+!.env.standalone
+*.apk
