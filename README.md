@@ -16,6 +16,25 @@ It comes in two forms that share one UI:
 
 ---
 
+## Screenshots
+
+<table>
+  <tr>
+    <td align="center"><img src="docs/screenshots/dashboard.png" width="200" alt="Dashboard with win/loss stats and a game in progress"></td>
+    <td align="center"><img src="docs/screenshots/board.png" width="200" alt="The carved-wood board with tamarind seeds in each pit"></td>
+    <td align="center"><img src="docs/screenshots/sowing.png" width="200" alt="Sowing in progress: a seed hops from pit to pit"></td>
+    <td align="center"><img src="docs/screenshots/thinking.png" width="200" alt="An hourglass while the opponent thinks"></td>
+  </tr>
+  <tr>
+    <td align="center"><sub>Stats and history</sub></td>
+    <td align="center"><sub>Your turn</sub></td>
+    <td align="center"><sub>Sowing, seed by seed</sub></td>
+    <td align="center"><sub>Opponent thinking</sub></td>
+  </tr>
+</table>
+
+---
+
 ## Android app
 
 **[Download the Android app: Pallankuzhi-1.0-release.apk](https://github.com/deepakraj610/Pallankuzhi/releases/download/v1.0.0/Pallankuzhi-1.0-release.apk)**
