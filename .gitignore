@@ -26,3 +26,7 @@ coverage/
 # Offline Android build mode flag (no secrets); the APK itself is a build artifact
 !.env.standalone
 *.apk
+*.aab
+*.jks
+*.keystore
+keystore.properties
