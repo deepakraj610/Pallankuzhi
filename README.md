@@ -1,5 +1,29 @@
+# Pallankuzhi
+
+A single-player game of **Pallankuzhi**, the traditional Tamil mancala. Play against an AI opponent
+(Easy or Medium) on a carved-wood board with tamarind seeds, with seed-by-seed sowing animation.
+
+## Android app
+
+The Android app is fully **offline**: the game runs on your phone, with no server and no login.
+Games and stats are saved on the device.
+
+**[Download the Android app (Pallankuzhi-1.0-release.apk)](https://github.com/deepakraj610/Pallankuzhi/releases/download/v1.0.0/Pallankuzhi-1.0-release.apk)**
+· [All releases](https://github.com/deepakraj610/Pallankuzhi/releases)
+
+To install:
+
+1. Download the APK onto your Android phone (Android 5.1 or newer).
+2. Open it and allow "install unknown apps" for the app you opened it from, if asked.
+
+If you have an earlier test build installed, uninstall it first, as it was signed with a different key.
+To build the app yourself, see [frontend/ANDROID.md](frontend/ANDROID.md).
+
+---
+
 # MicroSaaS Template
 
+> The web version of this project (FastAPI + React) was generated from the template below.
 > **Clone. Define. Build.** Full-stack SaaS in minutes.
 
 ---
